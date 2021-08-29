@@ -1,4 +1,4 @@
-Read Comic Online Downloader
+Read Comic Online Downloader:
 https://readcomiconline.li/
 
 If you want to download full comics to youre computer, the app will do it for you.
