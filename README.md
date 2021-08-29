@@ -13,9 +13,10 @@ please install first python3 and the following packages:
  3. Go to main.py directory
  4. In the command line type python main.py
  5. choose directory for output
- 6. enter url of *full* comics/manga (for example: https://readcomiconline.li/Comic/Iron-Man-2020-Robot-Revolution-iWolverine/TPB?id=187784)
-7.make sure comics page is on Reading type-All pages
- 7. Press download and wait ;)
+ 6. enter url of *full* comics/manga 
+ 7. (for example: https://readcomiconline.li/Comic/Iron-Man-2020-Robot-Revolution-iWolverine/TPB?id=187784)
+ 8. make sure comics page is on Reading type-All pages
+ 9. Press download and wait ;)
  
  ** I used basic tkinter implementation so perhaps in the future Ill update the user-interface.
  ** I used Threading so please when you press download wait for the download to complete.
