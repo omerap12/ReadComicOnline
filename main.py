@@ -121,7 +121,8 @@ def downloadingImages(links, source, name, isIssues, numberOfIssues, currentIsss
             texture = "Downloading issue " + str(currentIsssue) + " out of " + str(numberOfIssues)
         # getting the image, writing in binary mode
         image = requests.get(links[index])
-        file = open("photo" + str(index) + ".jpg", "wb")
+        padOutIndex = str(index).zfill(5)
+        file = open("photo" + padOutIndex + ".jpg", "wb")
         # writing
         file.write(image.content)
         # close file
@@ -214,6 +215,7 @@ def createComic():
         os.chdir(sourcePath)
     except OSError:
         return
+    popUp("Working","Please wait.")
     # getting name of output folder
     nameOfOutPutFolder = getOutPutDirectoryName(sourcePath)
     # creating the folder
@@ -228,8 +230,10 @@ def createComic():
         correctInputPathDirectory = getCorrectInputPath(directory=dir)
         # iterating through the files in each folder
         for file in os.listdir(dir):
+            #pad out
+            padOutIndex = str(count).zfill(5)
             # initiate name
-            name = "\\photo" + str(count) + ".jpg"
+            name = "\\photo" + padOutIndex + ".jpg"
             # initiate path of photo
             correctInputPathFile = correctInputPathDirectory + '\\' + file
             # copy photo to the dest
