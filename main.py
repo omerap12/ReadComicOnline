@@ -91,7 +91,6 @@ def getFirstResponse(url):
 def getLinks(pageInfo, pattern):
     # getting all result using regex
     result = re.findall(pattern, pageInfo)
-    print(pageInfo)
     links = []
     for s in result:
         links.append(re.findall("='(.*)", s))
@@ -162,10 +161,19 @@ def getFirstResponse(link):
 
 # getting all comic-books links in the collection
 def getMultipleIssuesLinks(link):
+    name_of_collection = getNameOfComics(link,False)
     # getting page content
     content = getFirstResponse(link)
     # return all links of the comic-books collection
-    return getLinks(content, pattern="<a  href=\"(.*)\"")
+    pattern = "a href=\"(.*)</a>"
+    first_output = re.findall(pattern, content)
+    links = []
+    # something like this https://readcomicsonline.ru/comic/eight-billion-genies-2022/3">Eight Billion Genies (2022-) #3
+    for n in first_output:
+        if name_of_collection in n:
+            # getting just the links
+            links.append(n.split("\"")[0])
+    return links
 
 
 # downloading all comic-books in the entire title collection
@@ -178,13 +186,11 @@ def initMultipleIssuesDownload():
     url = e.get()
     # calling function to get all comic-books link
     links = getMultipleIssuesLinks(link=url)
-    siteUrl = "https://readcomiconline.li"
     count = 1
     # iterate through comic books links and downloading each one
     for value in links:
-        comicUrl = siteUrl + value
-        nameOfComics = getNameOfComics(link=comicUrl, isIssue=True)
-        photoUrls = getLinks(getFirstResponse(comicUrl), pattern='lstImages.push\(\"(.*)\"')
+        nameOfComics = getNameOfComics(link=value, isIssue=True)
+        photoUrls = getLinks(getFirstResponse(value), pattern="<img class=\"img-responsive\" src=(.*?).jpg")
         downloadingImages(links=photoUrls, source=directoryPath, name=nameOfComics, isIssues=True,
                           numberOfIssues=len(links), currentIsssue=count)
         count += 1
@@ -199,7 +205,7 @@ def initDownload():
     # get the link of the page from entry
     url = e.get()
     # getting name of comic-book
-    nameOfComics = getNameOfComics(link=url, isIssue=False)
+    nameOfComics = getNameOfComics(link=url, isIssue=True)
     # downloading process
     links = getLinks(getFirstResponse(url), pattern="<img class=\"img-responsive\" src=(.*?).jpg")
     downloadingImages(links=links, source=directoryPath, name=nameOfComics, isIssues=False, numberOfIssues=0,
