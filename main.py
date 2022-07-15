@@ -91,7 +91,11 @@ def getFirstResponse(url):
 def getLinks(pageInfo, pattern):
     # getting all result using regex
     result = re.findall(pattern, pageInfo)
-    return result
+    print(pageInfo)
+    links = []
+    for s in result:
+        links.append(re.findall("='(.*)", s))
+    return links
 
 
 # start downloading images and updating status window
@@ -120,7 +124,7 @@ def downloadingImages(links, source, name, isIssues, numberOfIssues, currentIsss
         else:
             texture = "Downloading issue " + str(currentIsssue) + " out of " + str(numberOfIssues)
         # getting the image, writing in binary mode
-        image = requests.get(links[index])
+        image = requests.get(links[index][0]+".jpg")
         padOutIndex = str(index).zfill(5)
         file = open("photo" + padOutIndex + ".jpg", "wb")
         # writing
@@ -197,7 +201,7 @@ def initDownload():
     # getting name of comic-book
     nameOfComics = getNameOfComics(link=url, isIssue=False)
     # downloading process
-    links = getLinks(getFirstResponse(url), pattern='lstImages.push\(\"(.*)\"')
+    links = getLinks(getFirstResponse(url), pattern="<img class=\"img-responsive\" src=(.*?).jpg")
     downloadingImages(links=links, source=directoryPath, name=nameOfComics, isIssues=False, numberOfIssues=0,
                       currentIsssue=0)
 
