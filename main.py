@@ -279,7 +279,7 @@ def exit():
 # initiate screen
 root = Tk()
 root.geometry("650x200")
-root.title("ReadComicOnlineDownloader")
+root.title("ReadComicsOnlineDownloader")
 e = Entry(root, width=55)
 e.grid(row=0, column=0, columnspan=3, padx=30, pady=10)
 goButton = Button(root, text="Single Download", bg='pink', font=('Arial', 13), padx=40, pady=20, command=threading)
