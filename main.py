@@ -123,7 +123,7 @@ def downloadingImages(links, source, name, isIssues, numberOfIssues, currentIsss
         else:
             texture = "Downloading issue " + str(currentIsssue) + " out of " + str(numberOfIssues)
         # getting the image, writing in binary mode
-        image = requests.get(links[index][0]+".jpg")
+        image = requests.get(links[index][0] + ".jpg")
         padOutIndex = str(index).zfill(5)
         file = open("photo" + padOutIndex + ".jpg", "wb")
         # writing
@@ -161,7 +161,7 @@ def getFirstResponse(link):
 
 # getting all comic-books links in the collection
 def getMultipleIssuesLinks(link):
-    name_of_collection = getNameOfComics(link,False)
+    name_of_collection = getNameOfComics(link, False)
     # getting page content
     content = getFirstResponse(link)
     # return all links of the comic-books collection
@@ -225,11 +225,18 @@ def createComic():
         os.chdir(sourcePath)
     except OSError:
         return
-    popUp("Working","Please wait.")
+    popUp("Confirm","Please press OK and wait")
     # getting name of output folder
-    nameOfOutPutFolder = getOutPutDirectoryName(sourcePath)
+    nameOfOutPutFolder = getOutPutDirectoryName(sourcePath)+"_full_comics"
     # creating the folder
-    os.mkdir(nameOfOutPutFolder)
+    try:
+        os.mkdir(nameOfOutPutFolder)
+    except OSError:
+        popUp("Error","Please delete "+nameOfOutPutFolder+" folder and try again")
+        return
+    if nameOfOutPutFolder+".cbz" in os.listdir():
+        popUp("Error", "Please delete " + nameOfOutPutFolder + "folder and .cbz file and try again")
+        return
     # saving the path to the folder
     outputPath = os.path.abspath(nameOfOutPutFolder)
     # init counter to zero
@@ -240,16 +247,17 @@ def createComic():
         correctInputPathDirectory = getCorrectInputPath(directory=dir)
         # iterating through the files in each folder
         for file in os.listdir(dir):
-            #pad out
+            # pad out
             padOutIndex = str(count).zfill(5)
-            # initiate name
-            name = "\\photo" + padOutIndex + ".jpg"
+            # initialize name
+            name = str(os.path.sep) + "photo" + padOutIndex + ".jpg"
             # initiate path of photo
-            correctInputPathFile = correctInputPathDirectory + '\\' + file
+            correctInputPathFile = os.path.join(correctInputPathDirectory, file)
             # copy photo to the dest
             shutil.copy(correctInputPathFile, outputPath + name)
             # counter is up by one
             count += 1
+
     # converting directory to winrar file
     shutil.make_archive(nameOfOutPutFolder, "zip", outputPath)
     oldName = nameOfOutPutFolder + ".zip"
