@@ -32,10 +32,6 @@ Example:<br>
 3. Click on "Single Download" ![single_download](https://user-images.githubusercontent.com/61663422/179355080-4242b1e0-b460-4748-bab2-69bdfc9f8062.png)
 4. Wait for finished message ![finished](https://user-images.githubusercontent.com/61663422/179354990-7a9d780e-d8b0-4d5d-83cf-88c12cf20298.png)
 
-
-
-
-
  
 For mode2 (Entire title collection Download):<br>
 Choose directory for output.<br>
@@ -57,5 +53,15 @@ For mode3 (Create comic):<br>
 Press Create Comic.<br>
 Choose directory of *all issues* that were downloaded using mode2.<br>
 In the directory you'll see another directory containing all the images from the issue and cbz file.<br><br>
- 
+
+Example:<br>
+
+1. Click on "Create Comic" ![Untitled](https://user-images.githubusercontent.com/61663422/179360747-cb637aff-3a8c-4ef7-aabc-0cac42f10a7d.png)<br>
+2. Click ok and select the directory with all the issues: ![ok_click](https://user-images.githubusercontent.com/61663422/179360804-cd4d3aba-13ba-4cf8-bfce-71d4900b855f.png)
+3. Directory for example:<br> ![directory](https://user-images.githubusercontent.com/61663422/179360824-9031a093-7ffe-447d-8cfb-27d8835f7649.png)
+4. Confirm and wait:<br> ![ok_2](https://user-images.githubusercontent.com/61663422/179360833-c715a895-f4b4-445c-b4c2-51109f25e21b.png)
+5. When the process ends you will get the following message: ![finished](https://user-images.githubusercontent.com/61663422/179360866-f956e276-fb51-4314-9534-65d3b60ad87f.png)
+
  Enjoy!
+
+
