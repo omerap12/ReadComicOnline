@@ -23,7 +23,19 @@ For mode1 (Single comic-book download):<br>
 Choose directory for output.<br>
 Enter url of *full* comic.<br>
 (for example: https://readcomicsonline.ru/comic/daredevil-2022/1 ).<br>
-Press Single Download and wait ;)
+Press Single Download and wait ;)<br><br>
+
+Example:<br>
+1. Click on "Choose directory"![choose_directory](https://user-images.githubusercontent.com/61663422/179355070-bed6b914-e72a-4b41-ab62-a1cbc0487caf.png)
+2. Choose directory, for example: ![save_directory](https://user-images.githubusercontent.com/61663422/179354947-2782b989-f48c-41b9-ae05-36865498556f.png)
+2. Enter Url: <br>![enter_url](https://user-images.githubusercontent.com/61663422/179354955-6646e452-300a-403b-afa4-0162d1cc8fb3.png)
+3. Click on "Single Download" ![single_download](https://user-images.githubusercontent.com/61663422/179355080-4242b1e0-b460-4748-bab2-69bdfc9f8062.png)
+4. Wait for finished message ![finished](https://user-images.githubusercontent.com/61663422/179354990-7a9d780e-d8b0-4d5d-83cf-88c12cf20298.png)
+
+
+
+
+
  
 For mode2 (Entire title collection Download):<br>
 Choose directory for output.<br>
