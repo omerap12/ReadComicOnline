@@ -41,7 +41,17 @@ For mode2 (Entire title collection Download):<br>
 Choose directory for output.<br>
 Enter the url of all the issues of comics.<br>
 (for example: https://readcomicsonline.ru/comic/dc-vs-vampires-2021).<br>
-Press Title Collection Download and wait ;)
+Press Title Collection Download and wait ;)<br><br>
+
+Example:<br>
+1. Click on "Choose directory"![choose_directory](https://user-images.githubusercontent.com/61663422/179355070-bed6b914-e72a-4b41-ab62-a1cbc0487caf.png)
+2. Choose directory, for example: ![save_directory](https://user-images.githubusercontent.com/61663422/179354947-2782b989-f48c-41b9-ae05-36865498556f.png)
+2. Enter Url: <br>![url_mult](https://user-images.githubusercontent.com/61663422/179357768-a1b06c18-485f-46e5-9273-3028bd42f044.png)
+3. Click on "Title Collection Download![title_co](https://user-images.githubusercontent.com/61663422/179357757-81a0038c-3731-40d9-a3aa-18962704f070.png)
+d"
+4. Wait for finished message ![fin_mult](https://user-images.githubusercontent.com/61663422/179358019-32a9176c-b1fa-48f9-aa0b-ec6a5cd82134.png)
+
+
   
 For mode3 (Create comic):<br>
 Press Create Comic.<br>
