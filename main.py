@@ -96,11 +96,21 @@ def getLinks(pageInfo, pattern):
         links.append(re.findall("='(.*)", s))
     return links
 
+# function download only one image
+def download_image(link,index,isIssues):
+    global size
+    image = requests.get(link[0].strip()+".jpg")
+    padOutIndex = str(index).zfill(5)
+    file = open("photo"+padOutIndex+".jpg","wb")
+    file.write(image.content)
+    file.close()
 
 # start downloading images and updating status window
-def downloadingImages(links, source, name, isIssues, numberOfIssues, currentIsssue):
+def downloadingImages(links, source, name, isIssues, numberOfIssues,currentIsssue):
     # getting size of photos in comic-book page
+    global size
     size = len(links)
+    global mutex
     # getting path name
     path = os.path.join(source, name)
     # try to make new directory for the comic book
@@ -113,29 +123,31 @@ def downloadingImages(links, source, name, isIssues, numberOfIssues, currentIsss
         exit(2)
     # changing directory to the desire directory
     os.chdir(path=path)
-    # working on each photo
-    for index in range(size):
-        global texture
-        # if user asked for single comic book, print progress of each photo
-        if (isIssues == False):
-            texture = "Downloaded file: " + str(index) + " out of " + str(size)
-        # if user asked for entire title collection, print progress of each comic-book
-        else:
-            texture = "Downloading issue " + str(currentIsssue) + " out of " + str(numberOfIssues)
-        # getting the image, writing in binary mode
-        image = requests.get(links[index][0] + ".jpg")
-        padOutIndex = str(index).zfill(5)
-        file = open("photo" + padOutIndex + ".jpg", "wb")
-        # writing
-        file.write(image.content)
-        # close file
-        file.close()
-    # if finished all downloading , print and exit
-    if isIssues == False or (isIssues == True and currentIsssue == numberOfIssues):
-        popUp("Finished!", "Finished downloading!")
-        global isFinished
-        isFinished = True
-        time.sleep(1)
+
+    # creating a list of threads and run them
+    threads = []
+    index = 0
+    for link in links:
+        thread = Thread(target=download_image, args=(link, index, isIssues), )
+        threads.append(thread)
+        index = index + 1
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
+    global texture
+    global isFinished
+    if isIssues is False:
+            popUp("Finished!","Finished Downloading!")
+            isFinished = True
+            time.sleep(1)
+    else:
+        texture = "Downloading issue " + str(currentIsssue) + " out of " + str(numberOfIssues)
+        if numberOfIssues ==  currentIsssue:
+            popUp("Finished!", "Finished Downloading!")
+            isFinished = True
+            time.sleep(1)
+
 
 
 # getting the name of comic
@@ -186,15 +198,15 @@ def initMultipleIssuesDownload():
     url = e.get()
     # calling function to get all comic-books link
     links = getMultipleIssuesLinks(link=url)
-    count = 1
     # iterate through comic books links and downloading each one
+    number_of_comics = len(links)
+    currentIsssue = 1
     for value in links:
         nameOfComics = getNameOfComics(link=value, isIssue=True)
         photoUrls = getLinks(getFirstResponse(value), pattern="<img class=\"img-responsive\" src=(.*?).jpg")
         downloadingImages(links=photoUrls, source=directoryPath, name=nameOfComics, isIssues=True,
-                          numberOfIssues=len(links), currentIsssue=count)
-        count += 1
-
+                          numberOfIssues=number_of_comics,currentIsssue=currentIsssue)
+        currentIsssue = currentIsssue+1
 
 # start downloading process of single comic-book, checking valid output path
 def initDownload():
