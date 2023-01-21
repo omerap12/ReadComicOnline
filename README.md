@@ -58,7 +58,7 @@ Enter Url: <br>![url_mult](https://user-images.githubusercontent.com/61663422/17
 Click on "Title Collection Download"![title_co](https://user-images.githubusercontent.com/61663422/179357757-81a0038c-3731-40d9-a3aa-18962704f070.png)
 \
 Wait for finished message ![fin_mult](https://user-images.githubusercontent.com/61663422/179358019-32a9176c-b1fa-48f9-aa0b-ec6a5cd82134.png)
-## Demo-Mode3
+## Demo-Mode 3
 Mode 3 (Create comic):\
 Click on "Create Comic" ![Untitled](https://user-images.githubusercontent.com/61663422/179360747-cb637aff-3a8c-4ef7-aabc-0cac42f10a7d.png)
 \
