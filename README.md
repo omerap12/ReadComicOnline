@@ -47,7 +47,7 @@ Wait for finished message ![finished](https://user-images.githubusercontent.com/
 
 
 
-## Demo-Mode 1
+## Demo-Mode 2
 Mode 2 (Entire title collection Download):\
 Click on "Choose directory"![choose_directory](https://user-images.githubusercontent.com/61663422/179355070-bed6b914-e72a-4b41-ab62-a1cbc0487caf.png)
 \
