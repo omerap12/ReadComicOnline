@@ -1,6 +1,6 @@
 
 # Read Comic Online Downloader
-Download comic books from the website: https://readcomiconline.li/
+Download comic books from the website: https://readcomicsonline.ru/
 
 
 
